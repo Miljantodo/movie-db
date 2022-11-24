@@ -16,7 +16,7 @@ const NotFound = () => {
           className="noMatchesButton"
           onClick={() => navigate("/")}
         >
-          Go to Home.
+          Go back Home.
         </button>
       </div>
     </>
