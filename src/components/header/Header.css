@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #152746;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.search {
+  font-family: inherit;
+  font-size: 1.2rem;
+  border: 3px solid #161e2c;
+  border-radius: 45px;
+  background-color: transparent;
+  color: #f0f0f0;
+  padding: 0.5rem 1.5rem;
+}

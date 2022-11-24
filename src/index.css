@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body  {
+  display: flex;
+  flex-direction: column;
+  background-color:  #161e2c;
+  color: #f0f0f0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+
+}
