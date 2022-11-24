@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../logo/Logo";
-import Switch from "../switch/Switch";
+import Switch from "../switch";
 import "./Header.css";
 
 const Header = () => {

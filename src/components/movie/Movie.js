@@ -1,6 +1,5 @@
 import React from "react";
-import { useContext } from "react";
-import { Context } from "../../App";
+import useAppContext from "../../hooks/useAppContext";
 import "./Movie.css";
 
 const IMAGE_API = "http://image.tmdb.org/t/p/w500";
@@ -18,8 +17,8 @@ const Movie = ({
   vote_average,
   release_date = "TBD",
 }) => {
-  const {listView, likedMovies} = useContext(Context);
-  console.log(listView , likedMovies)
+  const { listView, likedMovies } = useAppContext();
+  console.log(listView, likedMovies);
 
   if (listView === false) {
     return (
@@ -51,7 +50,9 @@ const Movie = ({
       <div className="movie-info-list">
         <div className="list-top">
           <h3>{title}</h3>
-          <div className={`tag ${setVoteColor(vote_average)}`}>{vote_average}</div>
+          <div className={`tag ${setVoteColor(vote_average)}`}>
+            {vote_average}
+          </div>
         </div>
         <span className="tag">{release_date.slice(0, 4)}</span>
       </div>

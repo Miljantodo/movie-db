@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import Movie from "../../components/movie/Movie";
 import "./Search.css";
+import Button from "../../components/button/Button";
+import SortButtons from "./SortButtons";
 
 const API_URL =
   "https://api.themoviedb.org/3/search/movie?api_key=2c5307e64a5afb0739b710c1a1d34857";
@@ -54,201 +56,47 @@ const Search = () => {
     }
   };
 
-  const onTitleCLick = () => {
-    let type = "title";
-    const sorted = [...movies].sort((a, b) => a[type] > b[type]);
-    setMovies(sorted);
-  };
-  const onTitleCLickAgain = () => {
-    let type = "title";
-    const sorted = [...movies].sort((a, b) => b[type] > a[type]);
-    setMovies(sorted);
-  };
-
-  const onYearCLick = () => {
-    let type = "release_date";
-    const sorted = [...movies].sort((a, b) => b[type] > a[type]);
-    setMovies(sorted);
-  };
-  const onYearCLickAgain = () => {
-    let type = "release_date";
-    const sorted = [...movies].sort((a, b) => a[type] > b[type]);
-    setMovies(sorted);
-  };
-
-  const onRatingCLick = () => {
-    let type = "vote_average";
-    const sorted = [...movies].sort((a, b) => b[type] > a[type]);
-    setMovies(sorted);
-  };
-  const onRatingCLickAgain = () => {
-    let type = "vote_average";
-    const sorted = [...movies].sort((a, b) => a[type] > b[type]);
+  const onSort = (type = "title", reverse = false) => {
+    const sorted = [...movies].sort((a, b) =>
+      !reverse ? a[type] > b[type] : b[type] > a[type]
+    );
     setMovies(sorted);
   };
 
   if (movies.length > 0) {
-    if (currentPage === 1 && totalPages === 1) {
-      return (
-        <>
-          <div className="pag-sort">
-            <h3>Sort By</h3>
-            <div className="pag-sort-buttons">
-              <div className="hidden">Previous Page</div>
-              <div className="sort-buttons">
-                <button
-                  onClick={onTitleCLick}
-                  onDoubleClick={onTitleCLickAgain}
-                >
-                  Title
-                </button>
-                <button onClick={onYearCLick} onDoubleClick={onYearCLickAgain}>
-                  Year
-                </button>
-                <button
-                  onClick={onRatingCLick}
-                  onDoubleClick={onRatingCLickAgain}
-                >
-                  Rating
-                </button>
-              </div>
-              <div className="hidden">Next Page</div>
-            </div>
-            <h3>
-              Page {currentPage} / {totalPages}
-            </h3>
+    const previousPageVisible = currentPage > 1;
+    const nextPageVisible = currentPage < totalPages;
+
+    return (
+      <>
+        <div className="pag-sort">
+          <h3>Sort By</h3>
+          <div className="pag-sort-buttons">
+            <button
+              className={previousPageVisible ? "pag-button-prev" : "hidden"}
+              onClick={() => {
+                setCurrentPage((pages) => pages - 1);
+              }}
+            >
+              Previous Page
+            </button>
+            <SortButtons onSort={onSort} />
+            <button
+              className={nextPageVisible ? "pag-button-next" : "hidden"}
+              onClick={() => {
+                setCurrentPage((pages) => pages + 1);
+              }}
+            >
+              Next Page
+            </button>
           </div>
-          <div className="movie-container">{renderMovies()}</div>
-        </>
-      );
-    } else if (currentPage === 1 && totalPages > 1) {
-      return (
-        <>
-          <div className="pag-sort">
-            <h3>Sort By</h3>
-            <div className="pag-sort-buttons">
-              <div className="hidden">Previous Page</div>
-              <div className="sort-buttons">
-                <button
-                  onClick={onTitleCLick}
-                  onDoubleClick={onTitleCLickAgain}
-                >
-                  Title
-                </button>
-                <button onClick={onYearCLick} onDoubleClick={onYearCLickAgain}>
-                  Year
-                </button>
-                <button
-                  onClick={onRatingCLick}
-                  onDoubleClick={onRatingCLickAgain}
-                >
-                  Rating
-                </button>
-              </div>
-              <button
-                className="pag-button-next"
-                onClick={() => {
-                  setCurrentPage((pages) => pages + 1);
-                }}
-              >
-                Next Page
-              </button>
-            </div>
-            <h3>
-              Page {currentPage} / {totalPages}
-            </h3>
-          </div>
-          <div className="movie-container">{renderMovies()}</div>
-        </>
-      );
-    } else if (currentPage < totalPages) {
-      return (
-        <>
-          <div className="pag-sort">
-            <h3>Sort By</h3>
-            <div className="pag-sort-buttons">
-              <button
-                className="pag-button-prev"
-                onClick={() => {
-                  setCurrentPage((pages) => pages - 1);
-                }}
-              >
-                Previous Page
-              </button>
-              <div className="sort-buttons">
-                <button
-                  onClick={onTitleCLick}
-                  onDoubleClick={onTitleCLickAgain}
-                >
-                  Title
-                </button>
-                <button onClick={onYearCLick} onDoubleClick={onYearCLickAgain}>
-                  Year
-                </button>
-                <button
-                  onClick={onRatingCLick}
-                  onDoubleClick={onRatingCLickAgain}
-                >
-                  Rating
-                </button>
-              </div>
-              <button
-                className="pag-button-next"
-                onClick={() => {
-                  setCurrentPage((pages) => pages + 1);
-                }}
-              >
-                Next Page
-              </button>
-            </div>
-            <h3>
-              Page {currentPage} / {totalPages}
-            </h3>
-          </div>
-          <div className="movie-container">{renderMovies()}</div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <div className="pag-sort">
-            <h3>Sort By</h3>
-            <div className="pag-sort-buttons">
-              <button
-                className="pag-button-prev"
-                onClick={() => {
-                  setCurrentPage((pages) => pages - 1);
-                }}
-              >
-                Previous Page
-              </button>
-              <div className="sort-buttons">
-                <button
-                  onClick={onTitleCLick}
-                  onDoubleClick={onTitleCLickAgain}
-                >
-                  Title
-                </button>
-                <button onClick={onYearCLick} onDoubleClick={onYearCLickAgain}>
-                  Year
-                </button>
-                <button
-                  onClick={onRatingCLick}
-                  onDoubleClick={onRatingCLickAgain}
-                >
-                  Rating
-                </button>
-              </div>
-              <div className="hidden">Next Page</div>
-            </div>
-            <h3>
-              Page {currentPage} / {totalPages}
-            </h3>
-          </div>
-          <div className="movie-container">{renderMovies()}</div>
-        </>
-      );
-    }
+          <h3>
+            Page {currentPage} / {totalPages}
+          </h3>
+        </div>
+        <div className="movie-container">{renderMovies()}</div>
+      </>
+    );
   }
 
   return (
