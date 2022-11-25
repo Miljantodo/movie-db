@@ -1,11 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/header/Header";
-import NotFound from "./pages/notfound/NotFound";
-import Home from "./pages/home/Home";
-import Search from "./pages/search/Search";
-import { createContext } from "react";
+import Header from "./components/header";
+import NotFound from "./pages/notfound";
+import Home from "./pages/home";
+import Search from "./pages/search";
 
 export const Context = createContext(false);
 

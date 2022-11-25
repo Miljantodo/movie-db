@@ -20,9 +20,9 @@
   color: #f0f0f0;
   padding: 0.5rem 1.5rem;
   cursor: pointer;
-}
 
-.noMatchesButton:hover {
-  background-color: #64b0a2;
-  transition: 0.3s;
+  &:hover {
+    background-color: #64b0a2;
+    transition: 0.3s;
+  }
 }

@@ -1,11 +1,9 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
-import Movie from "../../components/movie/Movie";
-import "./Search.css";
-import SortButtons from "../../components/button/SortButtons";
+import Movie from "../../components/movie";
+import "./Search.scss";
+import SortButtons from "../../components/buttons/SortButtons";
 
 const API_URL =
   "https://api.themoviedb.org/3/search/movie?api_key=2c5307e64a5afb0739b710c1a1d34857";

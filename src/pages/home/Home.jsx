@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import Movie from "../../components/movie/Movie";
+import Movie from "../../components/movie";
 import "../../components/movie/Movie.scss";
 import "./Home.scss";
-import SortButtons from "../../components/button/SortButtons";
+import SortButtons from "../../components/buttons/SortButtons";
 
 const MOVIE_API =
   "https://api.themoviedb.org/3/discover/movie?api_key=2c5307e64a5afb0739b710c1a1d34857&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrat&page=";
