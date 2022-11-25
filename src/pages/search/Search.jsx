@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import Movie from "../../components/movie/Movie";
 import "./Search.css";
-import Button from "../../components/button/Button";
-import SortButtons from "./SortButtons";
+import SortButtons from "../../components/button/SortButtons";
 
 const API_URL =
   "https://api.themoviedb.org/3/search/movie?api_key=2c5307e64a5afb0739b710c1a1d34857";

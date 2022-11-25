@@ -1,6 +1,6 @@
 import React from "react";
 import useAppContext from "../../hooks/useAppContext";
-import "./Movie.css";
+import "./Movie.scss";
 
 const IMAGE_API = "http://image.tmdb.org/t/p/w500";
 

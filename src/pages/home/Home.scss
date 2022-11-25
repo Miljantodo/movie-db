@@ -6,11 +6,11 @@
   top: 0px;
   z-index: 1;
   background-color: #161e2c;
-}
 
-.pag-sort h3 {
-  text-align: center;
-  height: 9px;
+  & h3 {
+    text-align: center;
+    height: 9px;
+  }
 }
 
 .pag-sort-buttons {
@@ -32,6 +32,11 @@
   color: #152746;
   justify-items: end;
   cursor: pointer;
+
+  &:hover {
+    background-color: #152746;
+    color: #f0f0f0;
+  }
 }
 .pag-middle {
   text-align: center;
@@ -54,15 +59,11 @@
   border: 3px solid black;
   color: #152746;
   cursor: pointer;
-}
 
-.pag-button-next:hover {
-  background-color: #152746;
-  color: #f0f0f0;
-}
-.pag-button-prev:hover {
-  background-color: #152746;
-  color: #f0f0f0;
+  &:hover {
+    background-color: #152746;
+    color: #f0f0f0;
+  }
 }
 
 .hidden {
@@ -83,34 +84,34 @@
   top: 0px;
   background-color: #161e2c;
   z-index: 1;
-}
 
-.sort h3 {
-  margin: 0;
-  padding-top: 9px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.2rem;
+  & h3 {
+    margin: 0;
+    padding-top: 9px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 }
 
 .sort-buttons {
   display: flex;
   justify-content: center;
-}
 
-.sort-buttons button {
-  margin: 1rem;
-  padding: 9px;
-  width: 6rem;
-  background-color: #f0f0f0;
-  font-size: 0.9rem;
-  border-radius: 45px;
-  border: 3px solid black;
-  color: #152746;
-  cursor: pointer;
-}
+  & button {
+    margin: 1rem;
+    padding: 9px;
+    width: 6rem;
+    background-color: #f0f0f0;
+    font-size: 0.9rem;
+    border-radius: 45px;
+    border: 3px solid black;
+    color: #152746;
+    cursor: pointer;
 
-.sort-buttons button:hover {
-  background-color: #152746;
-  color: #f0f0f0;
+    &:hover {
+      background-color: #152746;
+      color: #f0f0f0;
+    }
+  }
 }
