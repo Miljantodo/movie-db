@@ -4,6 +4,8 @@ import Movie from "../../components/movie";
 import "../../components/movie/Movie.scss";
 import "./Home.scss";
 import SortButtons from "../../components/buttons/SortButtons";
+import NextButton from "../../components/buttons/NextButton";
+import PreviousButton from "../../components/buttons/PreviousButton";
 
 const MOVIE_API =
   "https://api.themoviedb.org/3/discover/movie?api_key=2c5307e64a5afb0739b710c1a1d34857&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrat&page=";
@@ -56,23 +58,20 @@ const Home = () => {
         <div className="pag-sort">
           <h3>Sort By</h3>
           <div className="pag-sort-buttons">
-            <button
-              className={previousPageVisible ? "pag-button-prev" : "hidden"}
-              onClick={() => {
-                setPage((pages) => pages - 1);
-              }}
-            >
-              Previous Page
-            </button>
+            {previousPageVisible ? (
+              <PreviousButton
+                setPage={setPage}
+                previousPageVisible={previousPageVisible}
+              />
+            ) : (
+              <button className="hidden"></button>
+            )}
             <SortButtons onSort={onSort} />
-            <button
-              className={nextPageVisible ? "pag-button-next" : "hidden"}
-              onClick={() => {
-                setPage((pages) => pages + 1);
-              }}
-            >
-              Next Page
-            </button>
+            {nextPageVisible ? (
+              <NextButton setPage={setPage} nextPageVisible={nextPageVisible} />
+            ) : (
+              <button className="hidden"></button>
+            )}
           </div>
           <h3>
             Page {page} / {totalPages}

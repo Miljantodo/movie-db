@@ -4,6 +4,8 @@ import { ThreeDots } from "react-loader-spinner";
 import Movie from "../../components/movie";
 import "./Search.scss";
 import SortButtons from "../../components/buttons/SortButtons";
+import NextButton from "../../components/buttons/NextButton";
+import PreviousButton from "../../components/buttons/PreviousButton";
 
 const API_URL =
   "https://api.themoviedb.org/3/search/movie?api_key=2c5307e64a5afb0739b710c1a1d34857";
@@ -69,23 +71,23 @@ const Search = () => {
         <div className="pag-sort">
           <h3>Sort By</h3>
           <div className="pag-sort-buttons">
-            <button
-              className={previousPageVisible ? "pag-button-prev" : "hidden"}
-              onClick={() => {
-                setCurrentPage((pages) => pages - 1);
-              }}
-            >
-              Previous Page
-            </button>
+            {previousPageVisible ? (
+              <PreviousButton
+                setPage={setCurrentPage}
+                previousPageVisible={previousPageVisible}
+              />
+            ) : (
+              <button className="hidden"></button>
+            )}
             <SortButtons onSort={onSort} />
-            <button
-              className={nextPageVisible ? "pag-button-next" : "hidden"}
-              onClick={() => {
-                setCurrentPage((pages) => pages + 1);
-              }}
-            >
-              Next Page
-            </button>
+            {nextPageVisible ? (
+              <NextButton
+                setPage={setCurrentPage}
+                nextPageVisible={nextPageVisible}
+              />
+            ) : (
+              <button className="hidden"></button>
+            )}
           </div>
           <h3>
             Page {currentPage} / {totalPages}
