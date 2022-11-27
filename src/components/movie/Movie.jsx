@@ -1,5 +1,6 @@
 import React from "react";
 import useAppContext from "../../hooks/useAppContext";
+import { useNavigate } from "react-router-dom";
 import "./Movie.scss";
 
 const IMAGE_API = "http://image.tmdb.org/t/p/w500";
@@ -17,12 +18,12 @@ const Movie = ({
   vote_average,
   release_date = "TBD",
 }) => {
-  const { listView, likedMovies } = useAppContext();
-  console.log(listView, likedMovies);
+  const { listView } = useAppContext();
+  const navigate = useNavigate();
 
   if (listView === false) {
     return (
-      <div className="movie">
+      <div className="movie" onClick={() => navigate(`/movie?term=${title}`)}>
         <img
           className="image"
           src={
@@ -47,7 +48,10 @@ const Movie = ({
     );
   } else {
     return (
-      <div className="movie-info-list">
+      <div
+        className="movie-info-list"
+        onClick={() => navigate(`/movie?term=${title}`)}
+      >
         <div className="list-top">
           <h3>{title}</h3>
           <div className={`tag ${setVoteColor(vote_average)}`}>
