@@ -12,6 +12,7 @@ const setVoteColor = (vote) => {
 };
 
 const Movie = ({
+  id,
   title,
   poster_path,
   overview,
@@ -23,7 +24,7 @@ const Movie = ({
 
   if (listView === false) {
     return (
-      <div className="movie" onClick={() => navigate(`/movie?term=${title}`)}>
+      <div className="movie" onClick={() => navigate(`/movies/${id}`)}>
         <img
           className="image"
           src={
