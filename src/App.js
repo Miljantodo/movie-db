@@ -4,7 +4,7 @@ import Header from "./components/header";
 import NotFound from "./pages/notfound";
 import Home from "./pages/home";
 import Search from "./pages/search";
-import Watch from "./pages/watch/Watch";
+import MovieInfo from "./pages/movie_info";
 
 export const Context = createContext(false);
 
@@ -19,7 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/movie" element={<Watch />} />
+            <Route path="/movies/:movieId" element={<MovieInfo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Context.Provider>
