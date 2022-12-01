@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import "./MovieInfo.scss";
 
 const MovieInfo = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
+  const navigate = useNavigate();
   const MOVIE_INFO_URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=2c5307e64a5afb0739b710c1a1d34857&append_to_response=videos`;
   const IMAGE_API = "http://image.tmdb.org/t/p/w500";
 
@@ -17,6 +18,8 @@ const MovieInfo = () => {
         setMovie(data);
       });
   }, [MOVIE_INFO_URL, movieId]);
+
+  console.log(movie);
 
   if (!movie) {
     return <ThreeDots />;
@@ -36,9 +39,9 @@ const MovieInfo = () => {
         <div className="movie_info">
           <div className="movie_title">
             <h1>{movie.title} </h1>
+            <button onClick={() => navigate(-1)}>Go back</button>
           </div>
-          <h5>{movie.status}</h5>
-          <h2>Release date: {movie.release_date}</h2>
+          <h3>Release date: {movie.release_date}</h3>
           <div>
             <h2>Overview:</h2>
             <h4>{movie.overview}</h4>
@@ -55,7 +58,7 @@ const MovieInfo = () => {
                 video.type.includes("Trailer")
               )
                 ? renderTrailer()
-                : "Trailer not out yet."}
+                : "Trailer not available."}
             </div>
           </div>
         </div>
