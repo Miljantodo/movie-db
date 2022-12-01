@@ -1,0 +1,28 @@
+.noMatches {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.noMatchesTitle {
+  color: red;
+}
+
+.noMatchesButton {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1.2rem;
+  width: 21em;
+  border: 3px solid #f0f0f0;
+  border-radius: 45px;
+  background-color: #152746;
+  color: #f0f0f0;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #64b0a2;
+    transition: 0.3s;
+  }
+}

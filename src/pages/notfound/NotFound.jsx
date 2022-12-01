@@ -1,9 +1,10 @@
 import React from "react";
-import "./NotFound.css";
+import "./NotFound.scss";
 import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   const navigate = useNavigate();
+
   return (
     <>
       <div className="fof">
@@ -16,7 +17,7 @@ const NotFound = () => {
           className="noMatchesButton"
           onClick={() => navigate("/")}
         >
-          Go back Home.
+          Go to Home.
         </button>
       </div>
     </>

@@ -1,13 +1,13 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Logo from "../logo/Logo";
-import Switch from "../switch/Switch";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Logo from "../logo";
+import Switch from "../switch";
 import "./Header.css";
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const Header = () => {
     <>
       <header>
         <Logo />
-        <Switch />
+        {location.pathname.includes("movies") ? null : <Switch />}
         <form onSubmit={onSubmit}>
           <input
             className="search"
